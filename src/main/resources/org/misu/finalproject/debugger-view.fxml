@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.misu.finalproject.controller.DebuggerController">
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <Label text="Output">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ListView fx:id="outputView" prefHeight="250.0" prefWidth="95.0" VBox.vgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets right="5.0" />
+         </padding>
+      </VBox>
+   </right>
+   <bottom>
+      <HBox prefHeight="128.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="123.0" prefWidth="60.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Heap" />
+                  <TableView fx:id="heapTable" prefHeight="200.0" prefWidth="200.0">
+                     <columns>
+                        <TableColumn prefWidth="99.19997864961624" text="Address" />
+                        <TableColumn prefWidth="95.20001220703125" text="Value" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox prefHeight="123.0" prefWidth="54.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="File Table" />
+                  <ListView fx:id="fileTable" prefHeight="106.0" prefWidth="126.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="106.0" prefWidth="73.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="63.0" text="Variables" />
+                  <TableView fx:id="symbolTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn prefWidth="94.39996033906937" text="Symbol" />
+                        <TableColumn text="Value" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox prefHeight="123.0" prefWidth="206.0">
+               <children>
+                  <Label text="Barrier" />
+                  <TableView fx:id="barrierTable" prefHeight="200.0" prefWidth="200.0">
+                     <columns>
+                        <TableColumn prefWidth="99.19997864961624" text="Id" />
+                        <TableColumn prefWidth="95.20001220703125" text="Value" />
+                        <TableColumn prefWidth="99.19997864961624" text="Wait" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <left>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="245.0" prefWidth="100.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label prefHeight="22.0" prefWidth="109.0" text="Program">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="identifierList" onMouseClicked="#selectProgram" prefHeight="221.0" prefWidth="95.0" VBox.vgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="255.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="4.0" prefHeight="18.0" prefWidth="207.0" text="Execution Stack" textAlignment="CENTER" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="178.8">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ListView fx:id="executionStack" layoutX="18.0" layoutY="26.0" prefHeight="235.0" prefWidth="359.0" AnchorPane.bottomAnchor="2.842170943040401E-14" AnchorPane.leftAnchor="17.600000000000023" AnchorPane.rightAnchor="22.80000000000001" AnchorPane.topAnchor="26.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <ButtonBar buttonOrder="" BorderPane.alignment="CENTER">
+         <buttons>
+            <Button mnemonicParsing="false" onAction="#runOneStep" text="One Step" />
+            <Button mnemonicParsing="false" onAction="#runAllStep" text="All Step" />
+         </buttons>
+      </ButtonBar>
+   </top>
+</BorderPane>
